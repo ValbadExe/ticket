@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket de Concierto</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+            /* background: linear-gradient(135deg, #1a1a2e, #16213e); */
+            background: #350910;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+        }
+
+        .ticket {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0px 15px 35px rgba(0,0,0,0.4);
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Efecto perforado en los lados */
+        .ticket::before, .ticket::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #350910;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 5;
+        }
+        .ticket::before {
+            left: -10px;
+        }
+        .ticket::after {
+            right: -10px;
+        }
+
+        .ticket-header {
+            position: relative;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .ticket-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        }
+
+        .ticket-info {
+            padding: 20px;
+            position: relative;
+        }
+
+        .ticket-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #222;
+        }
+
+        .ticket-artist {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .ticket-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+
+        .ticket-details div {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .ticket-details div:hover {
+            transform: scale(1.05);
+        }
+
+        .ticket-details strong {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: #111;
+        }
+
+        .ticket-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-top: 2px dashed #ccc;
+            background: #fafafa;
+        }
+
+        .seat-info {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .qr-code {
+            width: 70px;
+            height: 70px;
+        }
+
+        @media (max-width: 480px) {
+            .ticket-details {
+                grid-template-columns: 1fr;
+            }
+            .ticket-footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Animación suave */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="ticket">
+    <!-- Imagen del evento -->
+    <div class="ticket-header" style="background-image: url(img/filantropia.jpg);">
+    </div>
+
+    <!-- Información del ticket -->
+    <div class="ticket-info">
+        <h2 class="ticket-title">Filantropía - Penyair</h2>
+        <p class="ticket-artist">Con mucho amor para Vale ❤️</p>
+
+        <div class="ticket-details">
+            <div>
+                <strong>Día</strong>
+                04
+            </div>
+            <div>
+                <strong>Mes</strong>
+                Octubre
+            </div>
+            <div>
+                <strong>Año</strong>
+                2025
+            </div>
+            <div>
+                <strong>Hora</strong>
+                19:00
+            </div>
+            <div style="grid-column: span 2;">
+                <strong>Lugar</strong>
+                Movistar Arena
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie del ticket -->
+    <div class="ticket-footer">
+        <div class="seat-info">RAP DEL ESPÍRITU (Segundo piso)</div>
+        <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=70x70&data=Ticket12345" alt="QR Code">
+    </div>
+</div>
+
+</body>
+</html>
